@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: page-service
+#    关闭缓存 实现动态编译
+  thymeleaf:
+    cache: false
+  rabbitmq:
+    host: 192.168.86.129
+    username: leyou
+    password: leyou
+    virtual-host: /leyou
+server:
+  port: 8084
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:10086/eureka
+  instance:
+    lease-renewal-interval-in-seconds: 5 #每个5秒发送一次心跳
+    lease-expiration-duration-in-seconds: 10 #每隔十秒不发就过期
+    prefer-ip-address: true
+    ip-address: 127.0.0.1
+    instance-id: ${spring.application.name}:${server.port}
